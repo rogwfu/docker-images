@@ -15,8 +15,6 @@ RUN apt-get update
 # Install Git 
 RUN apt-get install -y git-core 
 
-# Configure git to not verify https
-RUN git config --global http.sslVerify false
 
 # Install ruby dependencies
 RUN apt-get install -y curl libgdbm-dev libncurses5-dev automake libtool bison libffi-dev build-essential
@@ -34,6 +32,9 @@ RUN chmod 777 /builds
 
 # Switch user
 USER wopr
+
+# Configure git to not verify https
+RUN git config --global http.sslVerify false
 
 # Install rvm & ruby 2.2.3
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
