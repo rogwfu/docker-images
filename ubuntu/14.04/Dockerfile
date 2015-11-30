@@ -28,6 +28,10 @@ RUN useradd -ms /bin/bash wopr
 RUN adduser wopr sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
+# Create builds directory for wopr user
+RUN mkdir /builds
+RUN chmod 777 /builds
+
 # Switch user
 USER wopr
 
