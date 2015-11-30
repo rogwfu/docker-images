@@ -26,8 +26,8 @@ RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A170311380
 RUN cd /tmp && curl -sSL https://get.rvm.io | bash -s stable
 RUN echo 'source /usr/local/rvm/scripts/rvm' >> /etc/bash.bashrc
 RUN /bin/bash -l -c "rvm requirements"
-RUN /bin/bash -l -c "rvm install 2.2.3"
-RUN /bin/bash -l -c "rvm use 2.2.3 --default  --disable-binary"
+RUN /bin/bash -l -c "rvm install 2.2.3 --disable-binary"
+RUN /bin/bash -l -c "rvm use 2.2.3 --default"
 RUN echo "gem: --no-ri --no-rdoc" > ~/.gemrc
 RUN /bin/bash -l -c "gem install bundler"
 
