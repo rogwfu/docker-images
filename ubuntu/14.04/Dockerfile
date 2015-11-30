@@ -41,5 +41,8 @@ RUN /bin/bash -l -c "rvm use 2.2.3 --default"
 RUN echo "gem: --no-ri --no-rdoc" > ~/.gemrc
 RUN /bin/bash -l -c "gem install bundler"
 
+# Set the work dir
+WORKDIR /home/wopr
+
 # overwrite this with 'CMD []' in a dependent Dockerfile
 CMD ["/bin/bash"]
