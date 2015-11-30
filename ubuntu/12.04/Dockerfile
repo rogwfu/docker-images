@@ -19,7 +19,7 @@ RUN apt-get install -y git-core
 RUN git config --global http.sslVerify false
 
 # Install ruby dependencies
-RUN apt-get install -y curl libgdbm-dev libncurses5-dev automake libtool bison libffi-dev build-essential
+RUN apt-get install -y curl libgdbm-dev libncurses5-dev automake libtool bison libffi-dev build-essential sudo
 
 # Add build user
 RUN useradd -ms /bin/bash wopr
