@@ -21,10 +21,20 @@ RUN git config --global http.sslVerify false
 # Install ruby dependencies
 RUN apt-get install -y curl libgdbm-dev libncurses5-dev automake libtool bison libffi-dev build-essential
 
+# Add build user
+RUN useradd -ms /bin/bash wopr
+
+# Add user to sudo
+RUN adduser wopr sudo
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+# Switch user
+USER wopr
+
 # Install rvm & ruby 2.2.3
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 RUN cd /tmp && curl -sSL https://get.rvm.io | bash -s stable
-RUN echo 'source /usr/local/rvm/scripts/rvm' >> /etc/bash.bashrc
+RUN echo 'source /home/wopr/.rvm/bin/rvm' >> ~/.bashrc 
 RUN /bin/bash -l -c "rvm requirements"
 RUN /bin/bash -l -c "rvm install 2.2.3 --disable-binary"
 RUN /bin/bash -l -c "rvm use 2.2.3 --default"
