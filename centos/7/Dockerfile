@@ -10,12 +10,12 @@ FROM centos:7
 MAINTAINER Roger Seagle 
 
 # Update the repository sources list
-RUN yum –y update  
+RUN yum -y update; yum clean all
 
 # Install Git 
 RUN yum -y install git
 
-# Install ruby dependencies
+## Install ruby dependencies
 RUN yum -y install tar which patch libyaml-devel libffi-devel glibc-headers autoconf gcc-c++ glibc-devel readline-devel zlib-devel openssl-devel bzip2 automake libtool bison
 
 # Configure git to not verify https
