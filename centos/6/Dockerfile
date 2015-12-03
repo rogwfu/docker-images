@@ -1,27 +1,22 @@
 ############################################################
-# Dockerfile to build Centos 7 custom container images
+# Dockerfile to build Centos 6 custom container images
 # Based on Debian 
 ############################################################
 
 # Set the base image to Centos 
-FROM centos:7
+FROM centos:6
 
 # File Author / Maintainer
 MAINTAINER Roger Seagle 
 
-RUN rpm -ivh http://download.fedoraproject.org/pub/epel/7/$(arch)/e/epel-release-7-5.noarch.rpm
-
 # Update the repository sources list
 RUN yum -y update; yum clean all
 
-# Install development
-RUN yum groupinstall -y 'Development Tools'
-
-# Install Other devtools 
-RUN yum -y install git fakeroot cmake
+# Install Git 
+RUN yum -y install git
 
 ## Install ruby dependencies
-RUN yum -y install tar which patch libyaml-devel libffi-devel glibc-headers autoconf gcc-c++ glibc-devel readline-devel zlib-devel openssl-devel bzip2 automake libtool bison
+RUN yum -y install tar which patch libyaml-devel libffi-devel glibc-headers autoconf gcc-c++ glibc-devel readline-devel zlib-devel openssl-devel bzip2 automake libtool bison fakeroot
 
 # Configure git to not verify https
 RUN git config --global http.sslVerify false
