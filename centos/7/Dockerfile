@@ -16,7 +16,7 @@ RUN yum -y update; yum clean all
 RUN yum -y install git
 
 ## Install ruby dependencies
-RUN yum -y install tar which patch libyaml-devel libffi-devel glibc-headers autoconf gcc-c++ glibc-devel readline-devel zlib-devel openssl-devel bzip2 automake libtool bison
+RUN yum -y install tar which patch libyaml-devel libffi-devel glibc-headers autoconf gcc-c++ glibc-devel readline-devel zlib-devel openssl-devel bzip2 automake libtool bison fakeroot
 
 # Configure git to not verify https
 RUN git config --global http.sslVerify false
